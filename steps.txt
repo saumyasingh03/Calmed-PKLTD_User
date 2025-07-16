@@ -1,0 +1,9 @@
+npx supabase@latest login
+
+npx supabase@latest functions deploy send-contact-email
+
+make sure to add resend.com key to the secret section in supabase
+
+npm run dev
+
+app password qytf svpk enpp rjom
