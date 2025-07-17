@@ -30,7 +30,7 @@ const Resources = () => {
   }, [])
 
   return (
-    <div className="px-4 sm:px-6 md:px-10 py-10 max-w-7xl mx-auto">
+    <div className="px-4 sm:px-6 md:px-10 py-10  mx-auto">
       {/* Banner Section */}
       <div className="relative h-[220px] sm:h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-lg">
         <img

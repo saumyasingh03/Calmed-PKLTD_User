@@ -101,16 +101,10 @@ const ContactUs = () => {
             <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,85,149,0.5),rgba(0,85,149,0.5))] opacity-60 mix-blend-multiply z-10" />
             <img src={contactBannerImg} className="absolute inset-0 w-full h-full object-cover opacity-90 z-0" alt="" />
           </div>
-          <div className="absolute inset-0 flex flex-col gap-4 items-center justify-center px-6 z-10 text-center">
-            <div className="flex items-center gap-3 mb-2">
-              <Heart className="text-red-300 w-8 h-8" />
-              <Baby className="text-blue-200 w-8 h-8" />
-              <Shield className="text-green-300 w-8 h-8" />
-            </div>
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-6 z-10 text-center">
+          
             <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold">Contact Our Medical Team</h2>
-            <p className="text-blue-100 text-lg max-w-2xl">
-              Reach out to our maternal health experts for guidance and support
-            </p>
+            
           </div>
         </div>
       </div>
