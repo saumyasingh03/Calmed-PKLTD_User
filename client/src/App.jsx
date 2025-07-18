@@ -12,6 +12,7 @@ import AdminDashboard from './pages/AdminDashboard'
 import AdminLogin from './components/AdminLogin'
 import ProtectedRoute from './components/ProtectedRoute'
 import AcademySection from './components/AcademySection'
+import PartnersSection from './pages/Partners'
 const App = () => {
   return (
       <div>
@@ -25,6 +26,7 @@ const App = () => {
           <Route path='/gallery' element={<Gallery/>}/>
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/academy" element={<AcademySection/>} />
+          <Route path="/partners" element={<PartnersSection />} />
           <Route 
             path="/admin" 
             element={
