@@ -22,8 +22,8 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['patient', 'doctor', 'admin', 'moderator', 'healthcare_worker'],
-    default: 'patient'
+    enum: ['user', 'doctor', 'admin', 'Editor'],
+    default: 'user'
   },
   avatar: {
     type: String,
@@ -107,7 +107,7 @@ const userSchema = new mongoose.Schema({
     },
     preferredLanguage: {
       type: String,
-      enum: ['English', 'Hindi', 'Bengali', 'Tamil', 'Telugu', 'Marathi', 'Gujarati', 'Urdu'],
+      enum: ['English', 'Hindi'],
       default: 'English'
     },
     location: {
