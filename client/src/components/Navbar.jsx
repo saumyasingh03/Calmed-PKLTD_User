@@ -108,14 +108,14 @@ const Navbar = () => {
 
 
                     
-                        {!isSignedIn && (
+                        {/* {!isSignedIn && (
                             <button
                                 className='px-4 py-2 bg-gray-600 text-white rounded-2xl hover:bg-gray-700 transition-colors duration-200 font-medium'
                                 onClick={() => handleNavigation('/admin-login')}
                             >
                                 Admin Login
                             </button>
-                        )}
+                        )} */}
                     </div>
 
                     {/* Mobile Menu Button */}

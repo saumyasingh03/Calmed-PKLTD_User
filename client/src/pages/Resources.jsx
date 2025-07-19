@@ -39,8 +39,8 @@ const Resources = () => {
         <div className="bg-white px-10">
             <style>{swiperNavDisabledStyle}</style>
 
-            <div className="px-4 sm:px-6 md:px-10 pt-10 mx-auto">
-                <div className="relative h-[250px] sm:h-[350px] md:h-[450px] rounded-3xl overflow-hidden shadow-lg">
+            <div className=" pt-10 mx-auto">
+                <div className="relative h-[200px] sm:h-[350px] md:h-[350px] rounded-3xl overflow-hidden shadow-lg">
                     <img src={hero1} className="absolute inset-0 w-full h-full object-cover opacity-30" alt="Background" />
                     <div className="absolute inset-0 bg-[#004785] opacity-60 mix-blend-multiply z-10" />
                     <img src={BannerImg} className="absolute inset-0 w-full h-full object-cover opacity-70 z-0" alt="Overlay" />
@@ -78,7 +78,7 @@ const Resources = () => {
                                 <SwiperSlide key={idx}>
                                     <a href={value.link || '#'} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-5 bg-[#e1eff8] rounded-2xl p-5 h-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                                         <div className="bg-[#004785] p-4 rounded-2xl flex-shrink-0">
-                                            <img src={value.icon} alt="icon" className="w-12 h-12 object-contain" />
+                                            <img src={value.icon} alt="icon" className="w-12 h-8 object-contain" />
                                         </div>
                                         <p className="text-lg font-bold text-[#004785]">
                                             {value.name}

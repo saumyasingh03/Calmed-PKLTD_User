@@ -6,7 +6,7 @@ import logoImg from "../assets/logo.png"
 const Footer = () => {
   return (
     <div>
-      {/* Full Width Image Gallery Section - No gaps, spans entire width */}
+      {/* image section */}
       <div className="w-full bg-white">
         <div className="flex items-end w-full">
           {ImageArray.map((val, idx) => (
@@ -33,13 +33,14 @@ const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8 lg:gap-12 py-12">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Grid updated to use 6 columns on desktop to fill the space */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-8 gap-y-14 py-16">
             
-            {/* Logo & Description */}
-            <div className="sm:col-span-2 lg:col-span-1 xl:col-span-1 space-y-4">
+            {/* Logo & Description - Spans 2 columns on large screens */}
+            <div className="md:col-span-1 lg:col-span-2 space-y-4">
               <div className="flex items-center p-1 rounded-4xl border-b-2 space-x-2">
-                  <img src={logoImg} alt="" />
+                <img src={logoImg} alt="CALMED Logo" />
               </div>
               <p className="text-blue-100 text-sm leading-relaxed">
                 Saving Mothers & Babies – Together
@@ -49,7 +50,7 @@ const Footer = () => {
               </p>
             </div>
 
-            {/* Quick Links */}
+            {/* Quick Links - Spans 1 column */}
             <div className="space-y-4">
               <h3 className="font-bold text-lg text-white border-b border-blue-400 pb-2">Quick Links</h3>
               <ul className="space-y-2">
@@ -70,82 +71,54 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Contact Info */}
+            {/* Contact Info - Spans 1 column */}
             <div className="space-y-4">
               <h3 className="font-bold text-lg text-white border-b border-blue-400 pb-2">Contact Us</h3>
               <div className="space-y-3">
-                <div className="flex items-center space-x-3 text-blue-200 hover:text-white transition-colors">
-                  <Phone className="w-4 h-4 text-blue-400" />
+                <a href="tel:+441474822294" className="flex items-center space-x-3 text-blue-200 hover:text-white transition-colors">
+                  <Phone className="w-4 h-4 text-blue-400 flex-shrink-0" />
                   <span className="text-sm">+44 (0) 1474 822294</span>
-                </div>
-                <div className="flex items-center space-x-3 text-blue-200 hover:text-white transition-colors">
-                  <Mail className="w-4 h-4 text-blue-400" />
+                </a>
+                <a href="mailto:calmedrotary@gmail.com" className="flex items-center space-x-3 text-blue-200 hover:text-white transition-colors">
+                  <Mail className="w-4 h-4 text-blue-400 flex-shrink-0" />
                   <span className="text-sm">calmedrotary@gmail.com</span>
-                </div>
-                <div className="flex items-center space-x-3 text-blue-200 hover:text-white transition-colors">
-                  <MapPin className="w-4 h-4 text-blue-400" />
+                </a>
+                <div className="flex items-start space-x-3 text-blue-200">
+                  <MapPin className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
                   <span className="text-sm">United Kingdom</span>
                 </div>
               </div>
             </div>
 
-            {/* Social Media */}
-            <div className="space-y-4">
-              <h3 className="font-bold text-lg text-white border-b border-blue-400 pb-2">Follow Us</h3>
-              <div className="flex gap-3">
-                {[
-                  { icon: Facebook, color: 'hover:bg-blue-600' },
-                  { icon: Linkedin, color: 'hover:bg-blue-700' },
-                  { icon: Instagram, color: 'hover:bg-pink-600' },
-                  { icon: MessageCircle, color: 'hover:bg-green-600' }
-              ].map((social, idx) => (
-                  <a
-                    key={idx}
-                    href="#"
-                    className={`w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 ${social.color} backdrop-blur-sm`}
-                  >
-                    <social.icon className="w-4 h-4" />
-                  </a>
-                ))}
-              </div>
-            </div>
+            {/* Social Media - Commented as requested */}
+            {/* <div className="space-y-4"> ... </div> */}
 
-            {/* Newsletter */}
-            <div className="sm:col-span-2 lg:col-span-1 xl:col-span-1 space-y-4">
+            {/* Newsletter - Spans 2 columns on large screens to fill the remaining space */}
+            <div className="md:col-span-2 lg:col-span-2 space-y-4">
               <h3 className="font-bold text-lg text-white border-b border-blue-400 pb-2">Newsletter</h3>
-              <p className="text-blue-200 text-sm">Stay updated with our latest news and events</p>
-              <div className="space-y-3">
+              <p className="text-blue-200 text-sm">Stay updated with our latest news and events.</p>
+              <form className="space-y-3">
                 <input
                   type="email"
                   placeholder="Enter your email"
                   className="w-full px-4 py-3 rounded-lg bg-white/10 backdrop-blur-sm text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300"
                   />
-                <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <button type="submit" className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
                   Subscribe Now
                 </button>
-              </div>
+              </form>
             </div>
           </div>
 
           {/* Bottom Section */}
           <div className="border-t border-white/20 py-6">
-            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0">
+            <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-y-4">
               <div className="text-center sm:text-left">
                 <p className="text-blue-200 text-sm">
                   © 2025 CALMED Rotary | All Rights Reserved
                 </p>
               </div>
-              {/* <div className="flex space-x-6 text-sm">
-                 <a href="#" className="text-blue-200 hover:text-white transition-colors underline">
-                  Privacy Policy
-                </a>
-                <a href="#" className="text-blue-200 hover:text-white transition-colors underline">
-                  Terms of Use
-                </a>
-                <a href="#" className="text-blue-200 hover:text-white transition-colors underline">
-                  Cookie Policy
-                </a> 
-              </div> */}
+              {/* <div className="flex space-x-6 text-sm"> ... </div> */}
             </div>
           </div>
         </div>
