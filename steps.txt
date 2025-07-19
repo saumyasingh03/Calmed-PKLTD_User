@@ -7,3 +7,7 @@ make sure to add resend.com key to the secret section in supabase
 npm run dev
 
 app password qytf svpk enpp rjom
+
+
+
+
