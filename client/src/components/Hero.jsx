@@ -22,70 +22,43 @@ const Hero = () => {
     return (
         // Set a base padding for mobile and increase for larger screens
         <div className="space-y-16 md:space-y-24">
-
-            {/* --- Hero Section --- */}
-            <div className="px-4 md:px-10 mt-10 space-y-8">
+            <div className="px-4 md:px-10 mt-10 space-y-8 relative">
                 {/* First Banner */}
                 <div className="relative h-[300px] rounded-2xl overflow-hidden shadow-lg">
-
                     <img src={hero1} className="absolute inset-0 w-full h-full object-cover opacity-90" alt="" />
-
                     <div className="absolute inset-0 bg-[#004785] opacity-60 mix-blend-multiply z-10"></div>
-
                     <img src={hero2} className="absolute inset-0 w-full h-full object-cover opacity-40 z-0" alt="" />
-
                     <div className="absolute inset-0 flex items-center justify-start px-8 z-10">
-
                         <h2 className="text-white text-3xl md:text-5xl font-bold">Stop Mothers from Dying</h2>
-
                     </div>
-
                 </div>
-
-
-
                 {/* Second Section */}
-
                 <div className="relative h-[300px] rounded-2xl overflow-hidden shadow-lg flex items-center">
-
                     <img src={hero1} className="absolute inset-0 w-full h-full object-cover opacity-40" alt="" />
-
                     <div className="absolute inset-0 bg-[#004785] opacity-60 mix-blend-multiply z-10"></div>
-
                     <img src={hero3} className="absolute inset-0 w-full h-full object-cover opacity-40 z-0" alt="" />
-
                     <div className="relative z-10 pl-8 max-w-2xl">
-
                         <h2 className="text-white text-3xl md:text-5xl font-bold">Maternal & Newborn Health For All</h2>
-
                         <p className="text-white mt-3 text-sm md:text-base">
-
                             Together, we can reduce maternal and neonatal mortality through training, partnership, and compassion.
-
                         </p>
-
                         <button
-
                             onClick={() => navigate('/contact')}
-
                             className="mt-4 px-5 py-3 bg-white text-blue-600 font-medium rounded-xl cursor-pointer">
-
                             Join the Alliance
-
                         </button>
-
                     </div>
-
                 </div>
-
-
-
-                <div className="absolute right-0 bottom-6 z-20 hidden md:block">
-
+                {/* <div className="absolute right-0 bottom-6 z-20 hidden md:block">
                     <img src={ladyImg} alt="lady" className="w-120 object-cover" />
-
+                </div> */}
+                <div className="hidden md:flex absolute bottom-0 right-0 h-[85vh] w-[40vw] max-w-[650px] items-end justify-end z-20 pointer-events-none">
+                    <img
+                        src={ladyImg}
+                        alt="A smiling woman"
+                        className="h-full w-auto object-contain"
+                    />
                 </div>
-
             </div>
 
             <hr />
