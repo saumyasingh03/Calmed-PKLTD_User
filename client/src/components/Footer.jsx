@@ -129,14 +129,14 @@ const Footer = () => {
 
           {/* Bottom Section */}
           <div className="border-t border-white/20 py-6">
-            <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0">
               <div className="text-center sm:text-left">
                 <p className="text-blue-200 text-sm">
                   © 2025 CALMED Rotary | All Rights Reserved
                 </p>
               </div>
-              <div className="flex space-x-6 text-sm">
-                <a href="#" className="text-blue-200 hover:text-white transition-colors underline">
+              {/* <div className="flex space-x-6 text-sm">
+                 <a href="#" className="text-blue-200 hover:text-white transition-colors underline">
                   Privacy Policy
                 </a>
                 <a href="#" className="text-blue-200 hover:text-white transition-colors underline">
@@ -144,8 +144,8 @@ const Footer = () => {
                 </a>
                 <a href="#" className="text-blue-200 hover:text-white transition-colors underline">
                   Cookie Policy
-                </a>
-              </div>
+                </a> 
+              </div> */}
             </div>
           </div>
         </div>

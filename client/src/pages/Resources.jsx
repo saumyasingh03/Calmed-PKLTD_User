@@ -10,192 +10,181 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const chunkArray = (arr, size) => {
-  const chunks = [];
-  for (let i = 0; i < arr.length; i += size) {
-    chunks.push(arr.slice(i, i + size));
-  }
-  return chunks;
+    const chunks = [];
+    for (let i = 0; i < arr.length; i += size) {
+        chunks.push(arr.slice(i, i + size));
+    }
+    return chunks;
 };
 
 const Resources = () => {
-  const chunkedDocuments = chunkArray(Documents, 3);
-  const navigate = useNavigate();
-  const prevRef = useRef(null)
-  const nextRef = useRef(null)
-  const [swiperReady, setSwiperReady] = useState(false)
+    const chunkedDocuments = chunkArray(Documents, 3);
+    const navigate = useNavigate();
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
+    const [swiperReady, setSwiperReady] = useState(false);
 
-  useEffect(() => {
-    // Delay swiper init after refs are set
-    setSwiperReady(true)
-  }, [])
+    useEffect(() => {
+        setSwiperReady(true);
+    }, []);
 
-  return (
-    <div className="px-4 sm:px-6 md:px-10 py-10  mx-auto">
-      {/* Banner Section */}
-      <div className="relative h-[220px] sm:h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-lg">
-        <img
-          src={hero1}
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-          alt="Background"
-        />
-        <div className="absolute inset-0 bg-blue-600 opacity-60 mix-blend-multiply z-10" />
-        <img
-          src={BannerImg}
-          className="absolute inset-0 w-full h-full object-cover opacity-70 z-0"
-          alt="Overlay"
-        />
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-4 text-center z-20">
-          <h2 className="text-white text-xl sm:text-3xl md:text-5xl font-bold">
-            Knowledge is Care: Explore CALMED Resources
-          </h2>
-          <h3 className="text-white text-sm sm:text-base">
-            Access documents, tools, and training designed to save lives               </h3>
-        </div>
-      </div>
+    const swiperNavDisabledStyle = `
+        .swiper-nav-disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+    `;
 
-      {/* Explanatory Documents */}
-      <div className="mt-16 sm:mt-20 px-2 sm:px-4">
-        <div className="relative flex items-center justify-center gap-2">
-          <div className="z-10 cursor-pointer bg-[#e1eff8] hover:bg-blue-100 text-[#1976d2] w-10 h-10 rounded-full flex items-center justify-center shadow-md swiper-expl-prev">
-            <ChevronLeft className="w-5 h-5" />
-          </div>
+    return (
+        <div className="bg-white px-10">
+            <style>{swiperNavDisabledStyle}</style>
 
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={15}
-            breakpoints={{
-              640: { slidesPerView: 1 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-              1280: { slidesPerView: 4 },
-            }}
-            modules={[Navigation]}
-            navigation={{
-              nextEl: ".swiper-expl-next",
-              prevEl: ".swiper-expl-prev",
-            }}
-            className="w-full"
-          >
-            {ExplanatoryDocs.map((value, idx) => (
-              <SwiperSlide key={idx}>
-                <div className="flex items-center gap-4 bg-[#e1eff8] rounded-2xl shadow px-4 py-3 h-full">
-                  <div className="bg-[#004785] p-3 rounded-2xl flex items-center justify-center">
-                    <img src={value.icon} alt="icon" className="w-10 h-10 object-contain" />
-                  </div>
-                  <p className="text-base sm:text-lg font-semibold text-[#004785] whitespace-nowrap">{value.name}</p>
+            <div className="px-4 sm:px-6 md:px-10 pt-10 mx-auto">
+                <div className="relative h-[250px] sm:h-[350px] md:h-[450px] rounded-3xl overflow-hidden shadow-lg">
+                    <img src={hero1} className="absolute inset-0 w-full h-full object-cover opacity-30" alt="Background" />
+                    <div className="absolute inset-0 bg-[#004785] opacity-60 mix-blend-multiply z-10" />
+                    <img src={BannerImg} className="absolute inset-0 w-full h-full object-cover opacity-70 z-0" alt="Overlay" />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-4 text-center z-20">
+                        <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold max-w-4xl">
+                            Knowledge is Care
+                        </h1>
+                        <h2 className="text-white text-lg sm:text-xl">
+                            Explore CALMED Resources, Documents & Tools
+                        </h2>
+                    </div>
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-          <div className="z-10 cursor-pointer bg-[#e1eff8] hover:bg-blue-100 text-[#1976d2] w-10 h-10 rounded-full flex items-center justify-center shadow-md swiper-expl-next">
-            <ChevronRight className="w-5 h-5" />
-          </div>
-        </div>
-      </div>
-
-      {/* Document Swiper (chunked 3 rows per slide) */}
-      <div className="mt-16 sm:mt-20 px-2 sm:px-4">
-        <div className="relative flex items-center justify-center gap-2">
-          {/* Prev Button */}
-          <div
-            ref={prevRef}
-            className="custom-swiper-prev z-10 cursor-pointer bg-[#e1eff8] hover:bg-blue-100 text-[#1976d2] w-10 h-10 rounded-full flex items-center justify-center"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </div>
-
-          {swiperReady && (
-            <Swiper
-              modules={[Navigation]}
-              spaceBetween={20}
-              navigation={{
-                prevEl: prevRef.current,
-                nextEl: nextRef.current,
-              }}
-              onBeforeInit={(swiper) => {
-                if (!swiper.params.navigation) return
-                swiper.params.navigation.prevEl = prevRef.current
-                swiper.params.navigation.nextEl = nextRef.current
-              }}
-              breakpoints={{
-                320: { slidesPerView: 1 },
-                640: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-              }}
-            >
-              {chunkedDocuments.map((group, idx) => (
-                <SwiperSlide key={idx}>
-                  <div className="flex flex-col gap-4">
-                    {group.map((doc, innerIdx) => (
-                      <div
-                        key={innerIdx}
-                        className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-[0_4px_20px_rgba(0,71,133,0.4)]"
-                      >
-                        <div className="text-[#004785] w-10 h-10 flex items-center justify-center">
-                          {doc.icon}
-                        </div>
-                        <div className="text-sm font-semibold text-[#004785]">
-                          {doc.title}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          )}
-
-          {/* Next Button */}
-          <div
-            ref={nextRef}
-            className="custom-swiper-next z-10 cursor-pointer bg-[#e1eff8] hover:bg-blue-100 text-[#1976d2] w-10 h-10 rounded-full flex items-center justify-center shadow-md"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </div>
-        </div>
-      </div>
-
-      {/* Other Resources */}
-      <div className="mt-16 mb-10 px-2">
-        <h3 className="text-2xl sm:text-3xl lg:text-4xl text-[#004785] font-bold mb-10 text-center">
-          Other Resources
-        </h3>
-        <div className="flex flex-wrap justify-center gap-6">
-          {ResourcesOpt.map((value, idx) => (
-            <div
-              key={idx}
-              className="flex items-center w-full sm:w-auto gap-4 rounded-2xl bg-[#004785] shadow-md px-4 py-3"
-            >
-              <div className="bg-[#036cc7] p-3 sm:p-4 rounded-2xl flex items-center justify-center">
-                <img
-                  src={value.icon}
-                  alt="icon"
-                  className="w-10 h-10 sm:w-14 sm:h-14 object-contain"
-                />
-              </div>
-              <p className="text-sm sm:text-base font-semibold text-white whitespace-nowrap">
-                {value.name}
-              </p>
             </div>
-          ))}
-        </div>
-      </div>
 
-      {/* Support CTA */}
-      <div className="mt-20 text-center flex flex-col items-center justify-center gap-5 px-4">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl text-[rgba(0,85,149,1)] font-bold max-w-3xl">
-          Take the Next Step in Supporting Maternal Health
-        </h1>
-        <h3 className="text-base sm:text-lg md:text-xl text-[#0564ad] max-w-2xl">
-          Together, we can transform maternal care in underserved regions — through knowledge, action, and compassion.
-        </h3>
-        <button onClick={() => navigate('/contact')} className="text-base sm:text-lg text-white mt-6 bg-[#256fa8] font-semibold px-6 sm:px-8 py-3 rounded-xl hover:bg-[#1f5c94] transition cursor-pointer">
-          Get in Touch
-        </button>
-      </div>
-    </div>
-  );
+            <section className="py-20 sm:py-24">
+                <div className="container mx-auto px-4">
+                    <div className="relative">
+                        <Swiper
+                            modules={[Navigation]}
+                            spaceBetween={30}
+                            slidesPerView={1}
+                            navigation={{
+                                nextEl: ".swiper-expl-next",
+                                prevEl: ".swiper-expl-prev",
+                                disabledClass: "swiper-nav-disabled",
+                            }}
+                            breakpoints={{
+                                640: { slidesPerView: 2 },
+                                1024: { slidesPerView: 3 },
+                                1280: { slidesPerView: 4 },
+                            }}
+                            className="!p-4"
+                        >
+                            {ExplanatoryDocs.map((value, idx) => (
+                                <SwiperSlide key={idx}>
+                                    <a href={value.link || '#'} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-5 bg-[#e1eff8] rounded-2xl p-5 h-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                                        <div className="bg-[#004785] p-4 rounded-2xl flex-shrink-0">
+                                            <img src={value.icon} alt="icon" className="w-12 h-12 object-contain" />
+                                        </div>
+                                        <p className="text-lg font-bold text-[#004785]">
+                                            {value.name}
+                                        </p>
+                                    </a>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                        <div className="swiper-expl-prev absolute top-1/2 -translate-y-1/2 -left-2 sm:-left-4 z-10 cursor-pointer bg-[#e1eff8] hover:bg-blue-200 text-[#1976d2] w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-2 border-white">
+                            <ChevronLeft className="w-8 h-8" />
+                        </div>
+                        <div className="swiper-expl-next absolute top-1/2 -translate-y-1/2 -right-2 sm:-right-4 z-10 cursor-pointer bg-[#e1eff8] hover:bg-blue-200 text-[#1976d2] w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-2 border-white">
+                            <ChevronRight className="w-8 h-8" />
+                        </div>
+                    </div>
+
+                    <div className="mt-24">
+                         <h2 className="text-4xl md:text-5xl font-bold text-center text-[#004785] mb-16">
+                            Our Document Library
+                        </h2>
+                        <div className="relative">
+                            {swiperReady && (
+                                <Swiper
+                                    modules={[Navigation]}
+                                    spaceBetween={40}
+                                    slidesPerView={1}
+                                    navigation={{
+                                        prevEl: prevRef.current,
+                                        nextEl: nextRef.current,
+                                        disabledClass: "swiper-nav-disabled",
+                                    }}
+                                    onBeforeInit={(swiper) => {
+                                        if (swiper.params.navigation) {
+                                            swiper.params.navigation.prevEl = prevRef.current;
+                                            swiper.params.navigation.nextEl = nextRef.current;
+                                        }
+                                    }}
+                                    breakpoints={{
+                                        768: { slidesPerView: 2 },
+                                        1280: { slidesPerView: 3 },
+                                    }}
+                                >
+                                    {chunkedDocuments.map((group, idx) => (
+                                        <SwiperSlide key={idx}>
+                                            <div className="flex flex-col gap-6">
+                                                {group.map((doc, innerIdx) => (
+                                                    <a href={doc.link || '#'} target="_blank" rel="noopener noreferrer" key={innerIdx} className="group flex items-center gap-6 p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-gray-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2">
+                                                        <div className="flex-shrink-0 bg-blue-100 text-[#004785] w-16 h-16 flex items-center justify-center rounded-2xl transition-all duration-300 group-hover:bg-[#004785] group-hover:text-white">
+                                                            {React.cloneElement(doc.icon, { className: 'w-8 h-8' })}
+                                                        </div>
+                                                        <div className="text-lg font-bold text-gray-800 group-hover:text-[#004785]">
+                                                            {doc.title}
+                                                        </div>
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+                            )}
+                            <div ref={prevRef} className="absolute top-1/2 -translate-y-1/2 -left-2 sm:-left-6 z-10 cursor-pointer bg-[#e1eff8] hover:bg-blue-200 text-[#1976d2] w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-2 border-white">
+                                <ChevronLeft className="w-8 h-8" />
+                            </div>
+                            <div ref={nextRef} className="absolute top-1/2 -translate-y-1/2 -right-2 sm:-right-6 z-10 cursor-pointer bg-[#e1eff8] hover:bg-blue-200 text-[#1976d2] w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-2 border-white">
+                                <ChevronRight className="w-8 h-8" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div className="py-20 sm:py-24 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <h3 className="text-4xl md:text-5xl text-[#004785] font-bold mb-16 text-center">
+                        Additional Tools & Links
+                    </h3>
+                    <div className="flex flex-wrap justify-center items-stretch gap-8">
+                        {ResourcesOpt.map((value, idx) => (
+                            <a href={value.link || '#'} target="_blank" rel="noopener noreferrer" key={idx} className="group flex items-center w-full max-w-md sm:w-auto flex-1 gap-5 rounded-2xl bg-[#004785] shadow-xl px-6 py-5 transition-transform duration-300 hover:scale-105">
+                                <div className="bg-[#036cc7] p-4 rounded-2xl flex items-center justify-center">
+                                    <img src={value.icon} alt="icon" className="w-14 h-14 object-contain" />
+                                </div>
+                                <p className="text-lg font-semibold text-white">
+                                    {value.name}
+                                </p>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            <div className="bg-white py-20 sm:py-24">
+                 <div className="container mx-auto px-4 text-center flex flex-col items-center justify-center gap-6">
+                    <h2 className="text-4xl md:text-5xl text-[rgba(0,85,149,1)] font-bold max-w-4xl">
+                        Take the Next Step in Supporting Maternal Health
+                    </h2>
+                    <p className="text-xl md:text-2xl text-[#0564ad] max-w-3xl">
+                        Together, we can transform maternal care in underserved regions — through knowledge, action, and compassion.
+                    </p>
+                    <button onClick={() => navigate('/contact')} className="text-xl text-white mt-6 bg-[#256fa8] font-bold px-10 py-4 rounded-xl hover:bg-[#1f5c94] transition-colors duration-300 cursor-pointer shadow-lg hover:shadow-xl">
+                        Get in Touch
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default Resources;

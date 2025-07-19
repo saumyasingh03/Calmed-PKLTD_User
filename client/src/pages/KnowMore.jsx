@@ -1,43 +1,60 @@
-import React from 'react';
-import { CardsData } from '../Options';
-import profileIcon from '../assets/noProfile.png';
+import React from 'react'
+import BannerImg from "../assets/knowMoreBanner.png"
+import hero1 from "../assets/hero1.png"
+import { CardsData } from '../Options'
+import Cards from '../components/Cards'
+import { useNavigate } from 'react-router-dom';
 
 const KnowMore = () => {
+  const navigate = useNavigate();
   return (
-    <div className="px-4 sm:px-6 md:px-10 max-w-7xl mx-auto">
-      <h2 className="text-[#004785] text-center text-2xl sm:text-3xl md:text-5xl font-bold mt-10 mb-16">
-        Who Are We
-      </h2>
+    <div className="px-4 sm:px-6 md:px-10">
 
-      <div className="flex flex-col gap-16">
-        {CardsData.map((data, idx) => (
-          <div
-            key={idx}
-            className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10"
-          >
-            {/* Profile Image */}
-            <div className="w-full md:w-1/3 lg:w-1/4 flex justify-center">
-              <img
-                src={data.profile || profileIcon}
-                alt={data.name}
-                className="object-cover rounded-xl w-full max-w-[280px] shadow-md"
-              />
-            </div>
-
-            {/* Description */}
-            <div className="w-full md:w-2/3 bg-white px-5 sm:px-6 py-6 rounded-2xl shadow-[0_4px_20px_rgba(0,71,133,0.1)]">
-              <h3 className="text-[#004785] text-xl sm:text-2xl md:text-3xl font-semibold mb-3 text-center md:text-left">
-                {data.name}
-              </h3>
-              <p className="text-sm sm:text-base text-gray-700 leading-relaxed text-justify">
-                {data.description}
-              </p>
-            </div>
-          </div>
-        ))}
+      {/* Banner Section */}
+      <div className="relative h-[250px] sm:h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-lg mt-10">
+        <img src={BannerImg} className="absolute inset-0 w-full h-full object-cover opacity-90" alt="Banner" />
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,85,149,0.5),rgba(0,85,149,0.5))] opacity-60 mix-blend-multiply z-10"></div>
+          <img src={hero1} className="absolute inset-0 w-full h-full object-cover opacity-70 z-0" alt="Overlay" />
+        </div>
+        <div className="absolute inset-0 flex flex-col gap-4 items-center justify-center text-center px-4 z-10">
+          <h2 className="text-white text-2xl sm:text-4xl md:text-5xl font-bold leading-tight">
+            Meet the People Behind CALMED
+          </h2>
+          <p className="text-white text-sm sm:text-base md:text-xl max-w-3xl">
+            United by compassion. Driven by science. Working to save mothers and babies worldwide.
+          </p>
+        </div>
       </div>
+
+      {/* Team Section */}
+      <section className="my-20">
+        <h3 className="text-[#005595] text-2xl sm:text-3xl md:text-4xl font-semibold text-center mt-10 mb-16 leading-relaxed">
+          Our team brings together global leaders in obstetrics, public health, and humanitarian medicine, committed to lowering maternal and newborn deaths through sustainable training and action.
+        </h3>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 mt-10 px-2 sm:px-10">
+          {CardsData.map((data, idx) => (
+            <Cards CardData={data} key={idx} />
+          ))}
+        </div>
+      </section>
+
+      {/* Support Section */}
+      <div className="mt-20 text-center flex flex-col items-center justify-center gap-5 mb-16 px-4">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl text-[rgba(0,85,149,1)] font-bold">
+          Be a Part of the Team That Saves Lives
+        </h1>
+        <h3 className="text-base sm:text-lg md:text-2xl text-[#0564ad] max-w-2xl">
+          Join hands with our global experts and community leaders to make maternal and newborn care accessible to all.
+        </h3>
+        <button onClick={() => navigate('/contact')} className="text-lg sm:text-xl text-white mt-6 bg-[#256fa8] font-semibold px-6 sm:px-8 py-2 rounded-xl hover:bg-[#1f5c94] transition cursor-pointer">
+          Join Us
+        </button>
+      </div>
+
     </div>
-  );
-};
+  )
+}
 
 export default KnowMore;

@@ -24,13 +24,13 @@ const navigate = useNavigate();
             {/* Hero Banner */}
             <div className="relative h-[300px] rounded-2xl overflow-hidden shadow-lg mb-10">
                 <img src={hero1} className="absolute inset-0 w-full h-full object-cover opacity-90" alt="Hero" />
-                <div className="absolute inset-0 bg-blue-600 opacity-60 mix-blend-multiply z-10"></div>
+                <div className="absolute inset-0 bg-[#005595] opacity-60 mix-blend-multiply z-10"></div>
                 <img src={aboutBanner} className="absolute inset-0 w-full h-full object-cover opacity-40 z-0" alt="Banner" />
                 <div className="absolute inset-0 flex flex-col gap-3 items-center justify-center text-center text-white px-4 z-10">
                     <h2 className="text-2xl md:text-4xl font-bold">Stop Mothers from Dying</h2>
                     <h3 className="text-base md:text-lg">Through Education, Training & Compassionate Action</h3>
 <button
-  className='bg-white text-blue-700 px-4 py-2 rounded-lg mt-2 font-medium hover:bg-blue-100 transition cursor-pointer'
+  className='bg-white text-[#005595] px-4 py-2 rounded-lg mt-2 font-medium hover:bg-blue-100 transition cursor-pointer'
   onClick={() => navigate('/contact')}
 >
   Join Us
@@ -92,7 +92,7 @@ const navigate = useNavigate();
 
                             {/* Expanded Content */}
                             {openIndex === idx && (
-                                <div className="border-t border-blue-200 px-6 pb-6 pt-4 flex flex-col lg:flex-row gap-6">
+                                <div className="border-t border-blue-200 px-6 pb-6 pt-4 flex flex-col lg:flex-row gap-6 items-center">
                                     <div className="text-gray-700 text-base leading-relaxed flex-1">
                                         {mission.content}
                                     </div>
@@ -100,7 +100,7 @@ const navigate = useNavigate();
                                         <img
                                             src={mission.imgUrl}
                                             alt="Mission"
-                                            className="w-full max-w-sm h-auto rounded-xl object-cover"
+                                            className="w-full max-w-sm h-60 rounded-xl object-cover"
                                         />
                                     )}
                                 </div>
@@ -184,7 +184,7 @@ const navigate = useNavigate();
                 </h2>
                 <div className="relative h-auto min-h-[300px] rounded-2xl overflow-hidden shadow-lg">
                     <img src={hero1} className="absolute inset-0 w-full h-full object-cover opacity-90" alt="" />
-                    <div className="absolute inset-0 bg-blue-600 opacity-60 mix-blend-multiply z-10"></div>
+                    <div className="absolute inset-0 bg-[#005595] opacity-60 mix-blend-multiply z-10"></div>
                     <img src={crowdBg} className="absolute inset-0 w-full h-full object-cover opacity-40 z-0" alt="" />
                     <div className="relative z-20 p-6 sm:p-10 text-white space-y-4 text-sm sm:text-base md:text-lg">
                         <p>

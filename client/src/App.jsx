@@ -7,7 +7,6 @@ import Resources from './pages/Resources'
 import WhoAreWe from './pages/WhoAreWe'
 import KnowMore from './pages/KnowMore'
 import Gallery from './pages/gallery'
-import crowdBg from "./assets/crowdImg.png"
 import AdminDashboard from './pages/AdminDashboard'
 import AdminLogin from './components/AdminLogin'
 import ProtectedRoute from './components/ProtectedRoute'

@@ -16,7 +16,6 @@ const Navbar = () => {
         { name: 'Home', path: '/' },
         { name: 'About Calmed', path: '/about' },
         { name: 'Paper & Resources', path: '/resources' },
-        { name: 'Our Partners', path: '/partners' },
         { name: 'Gallery', path: '/gallery' },
         { name: 'Who are We', path: '/WhoAreWe' }
     ]
