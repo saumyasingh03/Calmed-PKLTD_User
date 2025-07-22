@@ -2,6 +2,7 @@ import React from 'react';
 import { Facebook, Linkedin, Instagram, MessageCircle, Phone, Mail, MapPin } from 'lucide-react';
 import { ImageArray } from '../Options';
 import logoImg from "../assets/logo.png"
+import { Navigate } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -55,16 +56,16 @@ const Footer = () => {
               <h3 className="font-bold text-lg text-white border-b border-blue-400 pb-2">Quick Links</h3>
               <ul className="space-y-2">
                 {[
-                  'About CALMED',
-                  'Join T.E.N.A',
-                  'Resources & Training',
-                  'Gallery',
-                  'Contact',
-                  'Donate'
+                  {name:'About CALMED', path: '/about'},
+                  // 'Join T.E.N.A',
+                  {name: 'Resources & Training', path: '/resources'},
+                  {name: 'Gallery', path:'/gallery'},
+                  {name: 'Contact', path: '/contact'},
+                  // 'Donate'
                 ].map((link, idx) => (
                   <li key={idx}>
-                    <a href="#" className="text-blue-200 hover:text-white transition-colors duration-200 text-sm hover:translate-x-1 inline-block transform">
-                      {link}
+                    <a href={link.path} className="text-blue-200 hover:text-white transition-colors duration-200 text-sm hover:translate-x-1 inline-block transform" >
+                      {link.name}
                     </a>
                   </li>
                 ))}
