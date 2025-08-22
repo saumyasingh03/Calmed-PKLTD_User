@@ -102,6 +102,21 @@ app.get('/', (req, res) => {
   });
 });
 
+
+// saumya's task
+
+import documentRoutes from './routes/documentRoutes.js';
+app.use("/api", documentRoutes);
+
+import teamRoutes from './routes/teamRoutes.js';
+app.use('/api', teamRoutes);
+
+import galleryRoutes from './routes/galleryRoutes.js';
+app.use('/api', galleryRoutes);
+
+
+
+
 // Error handling middleware
 app.use(notFound);
 app.use(errorHandler);

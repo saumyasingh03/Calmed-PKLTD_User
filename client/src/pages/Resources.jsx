@@ -23,6 +23,17 @@ const Resources = () => {
     const prevRef = useRef(null);
     const nextRef = useRef(null);
     const [swiperReady, setSwiperReady] = useState(false);
+    const [documents, setDocuments] = useState([]);
+
+useEffect(() => {
+  const fetchDocuments = async () => {
+    const res = await fetch("http://localhost:5000/api/documents");
+    const data = await res.json();
+    setDocuments(data);
+  };
+  fetchDocuments();
+}, []);
+
 
     useEffect(() => {
         setSwiperReady(true);
@@ -121,11 +132,19 @@ const Resources = () => {
                                         1280: { slidesPerView: 3 },
                                     }}
                                 >
+
+                                    
                                     {chunkedDocuments.map((group, idx) => (
                                         <SwiperSlide key={idx}>
                                             <div className="flex flex-col gap-6">
                                                 {group.map((doc, innerIdx) => (
-                                                    <a href={doc.link || '#'} target="_blank" rel="noopener noreferrer" key={innerIdx} className="group flex items-center gap-6 p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-gray-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2">
+         <a
+          href={doc.cloudinaryUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          key={innerIdx}
+          className="group flex items-center gap-6 p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-gray-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2"
+        >
                                                         <div className="flex-shrink-0 bg-blue-100 text-[#004785] w-16 h-16 flex items-center justify-center rounded-2xl transition-all duration-300 group-hover:bg-[#004785] group-hover:text-white">
                                                             {React.cloneElement(doc.icon, { className: 'w-8 h-8' })}
                                                         </div>
@@ -136,6 +155,10 @@ const Resources = () => {
                                                 ))}
                                             </div>
                                         </SwiperSlide>
+
+
+
+
                                     ))}
                                 </Swiper>
                             )}
