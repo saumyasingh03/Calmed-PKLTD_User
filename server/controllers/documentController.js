@@ -1,11 +1,10 @@
-import   Document  from '../models/documentModel.js'; // named import
+import Document from '../models/Document.js';
 
 export const getAllDocuments = async (req, res) => {
   try {
-    const documents = await Document.find().select("title cloudinaryUrl"); // fetch necessary fields
-    res.status(200).json(documents);
-  } catch (error) {
-    console.error("Error fetching documents:", error);
-    res.status(500).json({ message: "Server Error" });
+    const docs = await Document.find().sort({ createdAt: -1 });
+    res.json(docs);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };

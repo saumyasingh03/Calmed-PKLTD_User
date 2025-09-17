@@ -1,4 +1,4 @@
-import TeamMember from '../models/TeamMember.js';
+import TeamMember from '../models/Member.js';
 
 export const getAllTeamMembers = async (req, res) => {
   try {
